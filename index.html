@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girasol Sorpresa</title>
+    <style>
+        body {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .sobre {
+            width: 250px;
+            height: 150px;
+            background: #c0392b;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 1s;
+        }
+        .sobre::before {
+            content: '\2665';
+            font-size: 50px;
+            color: white;
+            position: absolute;
+        }
+        .flor {
+            width: 300px;
+            height: 300px;
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: girar 3s linear infinite;
+        }
+        .mid {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #000, #ff5e00, #000);
+            filter: drop-shadow(0 0 8px #682600);
+            position: absolute;
+        }
+        .petal {
+            position: absolute;
+            width: 200px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff5e00, #ffbb00);
+        }
+        .petal:nth-child(2) { transform: rotate(45deg); }
+        .petal:nth-child(3) { transform: rotate(90deg); }
+        .petal:nth-child(4) { transform: rotate(135deg); }
+        .petal:nth-child(5) { transform: rotate(180deg); }
+        .petal:nth-child(6) { transform: rotate(225deg); }
+        .petal:nth-child(7) { transform: rotate(270deg); }
+        .petal:nth-child(8) { transform: rotate(315deg); }
+        @keyframes girar {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .mensaje {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 320px;
+            display: none;
+        }
+	p {
+color: white;
+            font-size: 24px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="sobre" onclick="mostrarFlor()"></div>
+    <div class="flor">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="mid"></div>
+    </div>
+    <div class="mensaje">"Unas fisicas para el instante, otras para la eternidad. Ambas, una expresión de mi afecto."🌻💛</div>
+ 	<p class="">- Sebastián</p>
+
+    <!-- Audio oculto -->
+    <audio id="cancion" src="https://files.catbox.moe/x427l4.mp3"></audio>
+
+    <script>
+        function mostrarFlor() {
+            document.querySelector('.sobre').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.sobre').style.display = 'none';
+                document.querySelector('.flor').style.display = 'flex';
+                document.querySelector('.mensaje').style.display = 'block';
+
+                // Reproducir la canción
+                document.getElementById('cancion').play();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
